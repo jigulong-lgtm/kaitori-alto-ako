@@ -295,6 +295,10 @@ em { font-style: normal; }
 .header-line .icon { width: 22px; height: 22px; stroke-width: 2.2; }
 .header-line__label { font-size: 0.75rem; line-height: 1; }
 .header-tel:hover { background: var(--paper); }
+/* スマホ：ラベルを包む span が本文の行間（約31px）を引き継ぎ、アイコンが上枠へはみ出していたのを解消（上下中央にそろえる） */
+@media (max-width: 767px) {
+  .header-tel__body { line-height: 1; }
+}
 
 /* ---------- 買取品の写真パネル（画像＋カテゴリー名） ---------- */
 /* 1pxの罫線で区切ったカタログ風の一枚パネル */
@@ -543,6 +547,14 @@ em { font-style: normal; }
 }
 .hero__story-more .icon { width: 13px; height: 13px; color: var(--red); stroke-width: 2.4; }
 .hero__story:hover .hero__story-more { color: var(--red); }
+/* スマホ：文章を少し控えめにし、2人の写真を少し大きく・文章寄りに置いて一つのまとまりに。
+   「ストーリーを読む」の矢印は右上の写真へ向く ↗ に（PC・タブレットは従来どおり →） */
+@media (max-width: 767px) {
+  .hero__people { right: 7%; top: 4%; width: 26%; }
+  .hero__story-text { font-size: 0.9375rem; line-height: 1.4; }
+  .hero__story-more { margin-top: 4px; }
+  .hero__story-more .icon { transform: rotate(-45deg); }
+}
 
 /* 買取品：床に置かれて見えるよう、1点ずつ接地影をつける */
 .hero__item {
