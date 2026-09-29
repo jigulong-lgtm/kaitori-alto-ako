@@ -547,13 +547,18 @@ em { font-style: normal; }
 }
 .hero__story-more .icon { width: 13px; height: 13px; color: var(--red); stroke-width: 2.4; }
 .hero__story:hover .hero__story-more { color: var(--red); }
-/* スマホ：文章を少し控えめにし、2人の写真を少し大きく・文章寄りに置いて一つのまとまりに。
-   「ストーリーを読む」の矢印は右上の写真へ向く ↗ に（PC・タブレットは従来どおり →） */
+/* スマホ：文章を小さくし、文章ブロックを2人の写真のすぐ左隣へ寄せて一つのまとまりに（左側は背景の商品写真を見せる余白）。
+   写真の左端＝100% − 7% − 26% ＝ 67% なので、文章ブロックの右端はそこから8px手前（right: 33% + 8px）。
+   「ストーリーを読む ↗」は右寄せにして、写真の左下から写真の方向を指す位置に（PC・タブレットは従来どおり →） */
 @media (max-width: 767px) {
   .hero__people { right: 7%; top: 4%; width: 26%; }
-  .hero__story-text { font-size: 0.9375rem; line-height: 1.4; }
-  .hero__story-more { margin-top: 4px; }
-  .hero__story-more .icon { transform: rotate(-45deg); }
+  .hero__story { left: auto; right: calc(33% + 8px); }
+  .hero__story::before { inset: -14px 0 -14px -24px; }   /* 白いぼかしが写真にかからないよう右側は広げない */
+  .hero__story-label { font-size: 0.6875rem; }            /* 11px */
+  .hero__story-text { font-size: 0.8125rem; line-height: 1.45; }   /* 13px */
+  .hero__story-more { display: flex; justify-content: flex-end; margin-top: 4px; font-size: 0.75rem;   /* 12px */
+    text-shadow: 0 0 3px #fff, 0 0 6px #fff, 0 0 10px #fff; }   /* 背景の写真の上でも読めるように */
+  .hero__story-more .icon { width: 12px; height: 12px; transform: rotate(-45deg); }
 }
 
 /* 買取品：床に置かれて見えるよう、1点ずつ接地影をつける */
