@@ -547,13 +547,14 @@ em { font-style: normal; }
 }
 .hero__story-more .icon { width: 13px; height: 13px; color: var(--red); stroke-width: 2.4; }
 .hero__story:hover .hero__story-more { color: var(--red); }
-/* スマホ：［背景の余白］［小さな文章ブロック］［2人の写真］の構図に。
-   文章ブロックは写真の左端（100% − 7% − 26% ＝ 67%）の4px手前に右端をそろえ、各行も右寄せにして写真に密着させる。
-   写真の上半分は左側が透明なので、行を右寄せにしないと人物から離れて見える。
+/* スマホ：［左の余白（--gutter）］［小さな文章ブロック］［4px］［2人の写真］［右側は広い余白］の構図に。
+   文章と写真を横並び（flex）の1グループにして左端寄せ。背景の白っぽい部分に文字を乗せて読みやすくする。
+   文章ブロックは各行を右寄せにして写真に密着させ（写真の上半分は左側が透明なため）、上端は写真より少し上から始める。
    「ストーリーを読む ↗」は写真の左下から写真の方向を指す位置に（PC・タブレットは従来どおり →） */
 @media (max-width: 767px) {
-  .hero__people { right: 7%; top: 4%; width: 26%; }
-  .hero__story { left: auto; right: calc(33% + 4px); top: 9%; text-align: right; }
+  .hero__story-group { display: flex; align-items: flex-start; gap: 4px; }
+  .hero__people { position: relative; right: auto; top: 4%; flex: none; width: 26%; }
+  .hero__story { position: relative; order: -1; flex: none; left: auto; top: calc(9% - 8px); margin-left: var(--gutter); text-align: right; }
   .hero__story::before { inset: -12px 0 -12px -20px; }   /* 白いぼかしが写真にかからないよう右側は広げない */
   .hero__story-label { font-size: 0.625rem; line-height: 1.5; letter-spacing: 0.14em; }   /* 10px */
   .hero__story-text { font-size: 0.6875rem; line-height: 1.5; letter-spacing: 0.02em; }  /* 11px */
